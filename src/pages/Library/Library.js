@@ -2,17 +2,31 @@ import React from 'react'
 import { connect } from "react-redux";
 import styles from './Library.module.css'
 import { books } from "./fakeData";
-import {addBook} from "../../infrastructure/redux/actions/library/addBook";
+import {addBook, removeBook} from "../../infrastructure/redux/actions/library";
 
-const Library = ({addBook}) => {
+const Library = ({addBook, removeBook, library}) => {
   return (
     <div className="flex flex-wrap gap-10 justify-center m-10">
       {books.map((book, index) =>
         <div key={index} className="relative">
-          <button
-            className="absolute z-40 -top-3 -right-3 bg-green-500 text-blue-100 p-1 w-10 h-10 rounded-full"
-            onClick={() => addBook(book)}
-          >Add</button>
+          {library.filter(library_book => book.id === library_book.id).length > 0
+            ? <>
+                <button
+                  className="absolute z-40 -top-3 -left-3 bg-red-400 text-blue-100 p-1 w-18 h-8 rounded-full"
+                  onClick={() => removeBook(book)}>
+                    Remove
+                </button>
+                <button
+                  className="absolute z-40 -top-3 -right-3 bg-gray-400 text-blue-100 p-1 w-16 h-8 rounded-full">
+                    Added
+                </button>
+            </>
+            : <button
+              className="absolute z-40 -top-3 -right-3 bg-green-500 text-blue-100 p-1 w-10 h-10 rounded-full"
+              onClick={() => addBook(book)}>
+                Add
+            </button>
+          }
           <div className='flex max-w-sm w-full bg-white shadow-md rounded-lg relative overflow-hidden mx-auto'>
             <div
               className="overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
@@ -63,4 +77,10 @@ const Library = ({addBook}) => {
   )
 }
 
-export default connect(null, {addBook})(Library)
+const mapStateToProps = state => {
+  return {
+    library: state.libraryReducer.books
+  }
+}
+
+export default connect(mapStateToProps, {addBook, removeBook})(Library)
