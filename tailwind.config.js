@@ -8,6 +8,9 @@ module.exports = {
       },
       height: {
         '500': '500px',
+      },
+      width: {
+        '1200': '1200px'
       }
     },
   },

@@ -23,7 +23,7 @@ function Layout() {
     return (
         <div>
             <Header />
-            <div className='content'>
+            <div className='content w-1200 m-auto'>
                 <Outlet />
             </div>
         </div>
