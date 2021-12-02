@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  purge: ['./*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -11,7 +11,22 @@ module.exports = {
       },
       width: {
         '1200': '1200px'
-      }
+      },
+      animation: {
+        type: 'type 3s ease-out .8s 2 forwards',
+        appear: 'appear 3.5s ease-out 1.4s forwards;'
+      },
+      keyframes: {
+        type: {
+          '0%': { transform: 'translateX(0ch)' },
+          '95%, 100%': { transform: 'translateX(44ch)' },
+        },
+        appear: {
+          '100%': {
+            opacity: 1
+          }
+        }
+      },
     },
   },
   variants: {

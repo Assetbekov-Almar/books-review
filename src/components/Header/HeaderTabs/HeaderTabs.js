@@ -1,19 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './HeaderTabs.module.css'
 import { Link } from 'react-router-dom'
 
 const HeaderTabs = () => {
+  const [activeTab, setActiveTab] = useState(null)
+
+  const tabs = [
+    {name: 'Library', pathname: 'library'},
+    {name: 'My Bookshelf', pathname: 'bookshelf'},
+    {name: 'Contacts', pathname: 'contacts'}
+  ]
+
+  const handleClick = (name) => () => {
+    setActiveTab(name)
+  }
+
     return (
         <ul className={styles.headerTabs}>
-            <li className={styles.headerTabs__name}>
-                <Link to='/library'>Library</Link>
+          {tabs.map((tab, index) => (
+            <li key={index}
+                onClick={handleClick(tab.name)}
+                className={`${styles.headerTabs__name} ${activeTab === tab.name ? styles.active : ''}`}>
+              <Link to={tab.pathname}>{tab.name}</Link>
             </li>
-            <li className={styles.headerTabs__name}>
-                <Link to='/bookshelf'>My Bookshelf</Link>
-            </li>
-            <li className={styles.headerTabs__name}>
-                <Link to='/about'>About Us</Link>
-            </li>
+          ))}
         </ul>
     )
 }

@@ -27,6 +27,7 @@
     width: 0;
 }
 
+.headerTabs__name.active::after,
 .headerTabs__name:hover::after {
     width: 100%;
     left: 0;

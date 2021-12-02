@@ -1,13 +1,29 @@
 import {emailValidator, loginValidator, passwordValidator} from "../../../infrastructure/utils/authValidation";
-import React from "react";
+import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom'
+
 
 const SignUpForm = (props) => {
   const { form, isNameModified, setIsNameModified, isLastNameModified,
           setIsLastNameModified, isEmailModified, setIsEmailModified, isPasswordModified,
           setIsPasswordModified, setIsSignIn, handleChange } = props
 
+  const navigate = useNavigate()
+  const [isEmptyError, setIsEmptyError] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const isEmpty = Object.values(form).some(x => x === '');
+    if (isEmpty) {
+      setIsEmptyError(true)
+      return
+    }
+    setIsEmptyError(false)
+    navigate('/library')
+  }
+
   return (
-    <form className="w-full max-w-sm flex flex-col justify-center items-center bg-gray-100 ">
+    <form className="w-full max-w-md flex flex-col justify-center items-center bg-gray-100" onSubmit={handleSubmit}>
 
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">
@@ -77,11 +93,12 @@ const SignUpForm = (props) => {
         </div>
       </div>
 
-      <div className="md:flex md:items-center">
+      <div className="flex items-center flex-col gap-y-3">
+        {isEmptyError && <p className="text-red-500">Please fill all the fields.</p>}
         <div className="mb-8">
           <button
             className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-            type="button">
+            type="submit">
             Sign Up
           </button>
         </div>
@@ -89,10 +106,10 @@ const SignUpForm = (props) => {
 
       <ul className="list-none">
         <li>Already a member?{' '}
-          <a className="text-blue-500 hover:text-blue-800 cursor-pointer"
+          <span className="text-blue-500 hover:text-blue-800 cursor-pointer"
              onClick={() => setIsSignIn(true)}>
             Sign In
-          </a>
+          </span>
         </li>
       </ul>
     </form>
