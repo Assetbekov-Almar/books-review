@@ -6,6 +6,7 @@
     height: 26px;
 }
 
+.exit_btn,
 .headerTabs__name {
     display: inline-block;
     font-size: 18px;
@@ -13,6 +14,17 @@
     cursor: pointer;
     position: relative;
     font-weight: 600;
+}
+
+.exit_btn {
+    background-color: #dcdcdc;
+    border-radius: 4px;
+    padding: 5px 20px;
+    color: #4f4e4e;
+}
+
+.exit_btn:hover {
+    background-color: #e1e1e1;
 }
 
 .headerTabs__name::after {

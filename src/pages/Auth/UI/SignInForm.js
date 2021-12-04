@@ -1,6 +1,8 @@
 import {emailValidator, passwordValidator} from "../../../infrastructure/utils/authValidation";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import LocalStorageService from "../../../infrastructure/service/storage/LocalStorageService";
+import {EMAIL, PASSWORD} from "../../../infrastructure/service/storage/config";
 
 const SignInForm = (props) => {
   const { form, isEmailModified, setIsEmailModified, isPasswordModified, setIsPasswordModified, setIsSignIn, handleChange } = props
@@ -16,6 +18,10 @@ const SignInForm = (props) => {
       return
     }
     setIsEmptyError(false)
+
+    LocalStorageService.setItem(EMAIL, form.email)
+    LocalStorageService.setItem(PASSWORD, form.password)
+
     navigate('/library')
   }
 

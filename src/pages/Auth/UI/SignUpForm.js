@@ -1,6 +1,8 @@
 import {emailValidator, loginValidator, passwordValidator} from "../../../infrastructure/utils/authValidation";
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom'
+import LocalStorageService from "../../../infrastructure/service/storage/LocalStorageService";
+import {EMAIL, FIRST_NAME, LAST_NAME, PASSWORD} from "../../../infrastructure/service/storage/config";
 
 
 const SignUpForm = (props) => {
@@ -19,6 +21,12 @@ const SignUpForm = (props) => {
       return
     }
     setIsEmptyError(false)
+
+    LocalStorageService.setItem(FIRST_NAME, form.firstName)
+    LocalStorageService.setItem(LAST_NAME, form.lastName)
+    LocalStorageService.setItem(EMAIL, form.email)
+    LocalStorageService.setItem(PASSWORD, form.password)
+
     navigate('/library')
   }
 

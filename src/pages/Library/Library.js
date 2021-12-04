@@ -3,11 +3,16 @@ import { connect } from "react-redux";
 import styles from './Library.module.css'
 import {addBook, removeBook} from "../../infrastructure/redux/actions/library";
 import { getBooksRequest } from "../../infrastructure/redux/actions/library";
+import {removeReview} from "../../infrastructure/redux/actions/bookshelf";
 
-const Library = ({getBooksRequest, foundBooks, loading, error, addBook, removeBook, library}) => {
+const Library = ({getBooksRequest, foundBooks, loading, error, addBook, removeBook, library, removeReview}) => {
   const [value, setValue] = useState('')
 
-  if (loading) return <div>loading...</div>
+  if (loading) return (
+    <div className="flex justify-center items-center mt-5">
+      <div className={`${styles.loader} ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32`}/>
+    </div>
+  )
 
   if (error) return <div>error...</div>
 
@@ -15,7 +20,8 @@ const Library = ({getBooksRequest, foundBooks, loading, error, addBook, removeBo
     setValue(e.target.value)
   }
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault()
     getBooksRequest(value)
   }
 
@@ -37,7 +43,7 @@ const Library = ({getBooksRequest, foundBooks, loading, error, addBook, removeBo
         </form>
       </div>
         <div className="flex flex-wrap gap-10 justify-center m-10">
-          {foundBooks.map((book, index) => {
+          {foundBooks?.map((book, index) => {
             const { volumeInfo } = book
             return (
               <div key={index} className="relative">
@@ -45,7 +51,7 @@ const Library = ({getBooksRequest, foundBooks, loading, error, addBook, removeBo
                   ? <>
                       <button
                         className="absolute z-40 -top-3 -left-3 bg-red-400 text-blue-100 p-1 w-18 h-8 rounded-full"
-                        onClick={() => removeBook(book)}>
+                        onClick={() => {removeBook(book); removeReview(book)}}>
                           Remove
                       </button>
                       <button
@@ -119,8 +125,8 @@ const mapStateToProps = state => {
     library: state.libraryReducer.books,
     foundBooks: state.getBooksReducer.books,
     loading: state.getBooksReducer.loading,
-    error: state.getBooksReducer.error
+    error: state.getBooksReducer.error,
   }
 }
 
-export default connect(mapStateToProps, {addBook, removeBook, getBooksRequest})(Library)
+export default connect(mapStateToProps, {addBook, removeBook, getBooksRequest, removeReview})(Library)

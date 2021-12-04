@@ -2,29 +2,7 @@ import React, {useState} from 'react'
 import styles from './Contacts.module.css'
 import feedback from '../../assets/images/Feedback.gif'
 import { send } from 'emailjs-com'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-const successNotify = () => toast.success("The message has been successfully sent!", {position: "top-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    theme: 'colored',
-    progress: undefined,
-});
-
-const failureNotify = () => toast.error("Something went wrong! Try again, please.", {
-    position: "top-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    theme: 'colored',
-    progress: undefined,
-});
+import {failureNotify, successNotify} from "../../infrastructure/utils/toastNotifications";
 
 const Contacts = () => {
     const [toSend, setToSend] = useState({
@@ -50,10 +28,10 @@ const Contacts = () => {
         setIsEmptyError(false)
 
         send(
-          'service_flk3ak2',
-          'template_d0uqz5w',
+          'service_0c0t89b',
+          'template_f1fo9tg',
           toSend,
-          'user_yqCPzQDMh1N1hZ9x596jo'
+          'user_fzMcAS4TUL53ER9r0bZex'
         )
           .then((response) => {
               if (response.status === 200) {

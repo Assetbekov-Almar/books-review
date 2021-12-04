@@ -11,7 +11,7 @@ const Auth = () => {
     password: ''
   })
 
-  const [isNameModified, setIsNameModified] = useState(false)
+   const [isNameModified, setIsNameModified] = useState(false)
   const [isLastNameModified, setIsLastNameModified] = useState(false)
   const [isEmailModified, setIsEmailModified] = useState(false)
   const [isPasswordModified, setIsPasswordModified] = useState(false)

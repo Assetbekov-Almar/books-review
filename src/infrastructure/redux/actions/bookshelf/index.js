@@ -1,8 +1,10 @@
-import {SET_REVIEW} from "./actionTypes"
+import {SET_REVIEW, REMOVE_REVIEW} from "./actionTypes"
 
-import {setReview} from "./actions"
+import {setReview, removeReview} from "./actions"
 
 export {
+	REMOVE_REVIEW,
 	SET_REVIEW,
-	setReview
+	setReview,
+	removeReview
 }

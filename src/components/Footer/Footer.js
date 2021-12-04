@@ -3,7 +3,7 @@ import github from '../../assets/images/github.svg'
 import gitlab from '../../assets/images/gitlab.svg'
 import {Link} from "react-router-dom"
 const Footer = () => (
-	<footer className="border-t relative border-gray-200 w-1200 m-auto">
+	<footer className="border-t relative border-gray-200 w-1200 m-auto mt-6">
 		<div
 			className="container flex flex-wrap items-center justify-center py-8 mx-auto  lg:justify-between"
 		>
