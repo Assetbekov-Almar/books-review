@@ -24,14 +24,14 @@ const Routes = () => {
         <Routing>
           {!email
             ? <>
-                <Route path='/auth' element={<Auth/>}/>
-                <Route path='*' element={<Navigate to='/auth'/>}/>
+                <Route path='/books-review//auth' element={<Auth/>}/>
+                <Route path='*' element={<Navigate to='/books-review//auth'/>}/>
               </>
-            : <Route path='/' element={<Layout />}>
+            : <Route path='/books-review' element={<Layout />}>
                 <Route path='library' element={<Library />} />
                 <Route path='bookshelf' element={<Bookshelf />} />
                 <Route path='contacts' element={<Contacts />} />
-              <Route path='*' element={<Navigate to='/'/>}/>
+              <Route path='*' element={<Navigate to='/books-review/'/>}/>
             </Route>
           }
         </Routing>
@@ -106,7 +106,7 @@ function Layout() {
 
   /* Only register a service worker if it's supported */
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
+    navigator.serviceWorker.register('/books-review/service-worker.js');
   }
 
   /**
