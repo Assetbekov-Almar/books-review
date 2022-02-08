@@ -3,12 +3,12 @@
   "name": "Dissertation: Progressive Web App",
   "icons": [
     {
-      "src": "/images/small_icon.png",
+      "src": "./small_icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/big_icon.png",
+      "src": "./big_icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
