@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/books-review/static/css/main.166eb79f.chunk.css",
+    "main.css": "/books-review/static/css/main.b68910a0.chunk.css",
     "main.js": "/books-review/static/js/main.69559b72.chunk.js",
     "main.js.map": "/books-review/static/js/main.69559b72.chunk.js.map",
     "runtime-main.js": "/books-review/static/js/runtime-main.106f15ce.js",
@@ -26,7 +26,7 @@
     "static/css/4.3a0d6e72.chunk.css.map": "/books-review/static/css/4.3a0d6e72.chunk.css.map",
     "static/css/5.123f092d.chunk.css.map": "/books-review/static/css/5.123f092d.chunk.css.map",
     "static/css/6.9def2bbd.chunk.css.map": "/books-review/static/css/6.9def2bbd.chunk.css.map",
-    "static/css/main.166eb79f.chunk.css.map": "/books-review/static/css/main.166eb79f.chunk.css.map",
+    "static/css/main.b68910a0.chunk.css.map": "/books-review/static/css/main.b68910a0.chunk.css.map",
     "static/js/2.89092ea4.chunk.js.LICENSE.txt": "/books-review/static/js/2.89092ea4.chunk.js.LICENSE.txt",
     "static/media/Bibliophile.310bcd0d.gif": "/books-review/static/media/Bibliophile.310bcd0d.gif",
     "static/media/Feedback.8e07ee44.gif": "/books-review/static/media/Feedback.8e07ee44.gif",
@@ -37,7 +37,7 @@
   "entrypoints": [
     "static/js/runtime-main.106f15ce.js",
     "static/js/2.89092ea4.chunk.js",
-    "static/css/main.166eb79f.chunk.css",
+    "static/css/main.b68910a0.chunk.css",
     "static/js/main.69559b72.chunk.js"
   ]
 }
