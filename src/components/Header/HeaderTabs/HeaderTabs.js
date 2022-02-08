@@ -8,9 +8,9 @@ const HeaderTabs = () => {
   const [activeTab, setActiveTab] = useState(null)
 
   const tabs = [
-    {name: 'Library', pathname: 'library'},
-    {name: 'My Bookshelf', pathname: 'bookshelf'},
-    {name: 'Contacts', pathname: 'contacts'}
+    {name: 'Library', pathname: ' books-review/library'},
+    {name: 'My Bookshelf', pathname: 'books-review/bookshelf'},
+    {name: 'Contacts', pathname: 'books-review/contacts'}
   ]
 
   const handleClick = (name) => () => {
@@ -19,7 +19,7 @@ const HeaderTabs = () => {
 
   const handleSignOutClick = () => {
     LocalStorageService.clear()
-    navigate('/auth')
+    navigate('books-review/auth')
   }
 
     return (
