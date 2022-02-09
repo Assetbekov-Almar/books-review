@@ -16,6 +16,6 @@
   "start_url": "/books-review",
   "background_color": "#3367D6",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/books-review",
   "theme_color": "#3367D6"
 }
