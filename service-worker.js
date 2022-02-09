@@ -1,31 +1,51 @@
+let cacheName = "OpenGithubPWA";// 👈 any unique name
 
-
-'use strict';
-
-const files = [
-	'/',
-	'/console.css',
-	'/console.js',
-	'/favicon.ico',
-	'/favicon.png',
-	'/manifest.json',
+let filesToCache = [
+    "/pwa1/", // 👈 your repository name , both slash are important
+    "service-worker.js",
+    "js/main.js",
+    "js/install-handler.js",
+    "js/settings.js",
+    "manifest.json"
+    // add your assets here
+    // ❗️❕donot add config.json here ❗️❕
 ];
 
-self.addEventListener('install', (event) => event.waitUntil(
-	caches.open('v1').then((cache) => cache.addAll(files))
-));
+self.addEventListener("install", function (event) {
+    event.waitUntil(caches.open(cacheName).then((cache) => {
+        console.log('installed successfully')
+        return cache.addAll(filesToCache);
+    }));
+});
 
-self.addEventListener('fetch', (event) => {
-	event.respondWith(caches.match(event.request).then((response) => {
-		if (response !== undefined) return response;
-		return fetch(event.request).then((response) => {
-			const responseClone = response.clone();
-			caches.open('v1').then((cache) => {
-				cache.put(event.request, responseClone);
-			});
-			return response;
-		}).catch((error) => {
-			throw error;
-		});
-	}));
-})
+self.addEventListener('fetch', function (event) {
+
+    if (event.request.url.includes('clean-cache')) {
+        caches.delete(cacheName);
+        console.log('Cache cleared')
+    }
+
+    event.respondWith(caches.match(event.request).then(function (response) {
+          if (response) {
+              console.log('served form cache')
+          } else {
+              console.log('Not serving from cache ', event.request.url)
+          }
+          return response || fetch(event.request);
+      })
+    );
+});
+
+self.addEventListener('activate', function (e) {
+    e.waitUntil(
+      caches.keys().then(function (keyList) {
+          return Promise.all(keyList.map(function (key) {
+              if (key !== cacheName) {
+                  console.log('service worker: Removing old cache', key);
+                  return caches.delete(key);
+              }
+          }));
+      })
+    );
+    return self.clients.claim();
+});
