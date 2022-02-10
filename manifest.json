@@ -23,7 +23,7 @@
       "name": "Contact us ",
       "short_name": "Contacts",
       "description": "Contact us via email",
-      "url": "/contacts",
+      "url": "/contacts"
     }
   ]
 }
