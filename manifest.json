@@ -17,5 +17,21 @@
   "background_color": "#3367D6",
   "display": "standalone",
   "scope": ".",
-  "theme_color": "#3367D6"
+  "theme_color": "#3367D6",
+  "shortcuts": [
+    {
+      "name": "Open Play Later",
+      "short_name": "Play Later",
+      "description": "View the list of podcasts you saved for later",
+      "url": "/play-later?utm_source=homescreen",
+      "icons": [{ "src": "/icons/play-later.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View Subscriptions",
+      "short_name": "Subscriptions",
+      "description": "View the list of podcasts you listen to",
+      "url": "/subscriptions?utm_source=homescreen",
+      "icons": [{ "src": "/icons/subscriptions.png", "sizes": "192x192" }]
+    }
+  ]
 }
