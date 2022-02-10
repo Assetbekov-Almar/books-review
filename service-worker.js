@@ -1,7 +1,7 @@
 let cacheName = "OpenGithubPWA";// 👈 any unique name
 
 let filesToCache = [
-    "/pwa1/", // 👈 your repository name , both slash are important
+    "/books-review/", // 👈 your repository name , both slash are important
     "service-worker.js",
     "js/main.js",
     "js/install-handler.js",
