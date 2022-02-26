@@ -24,7 +24,9 @@
       "short_name": "Contacts",
       "description": "Contact us via email",
       "url": "https://assetbekov-almar.github.io/books-review/contacts",
-      "icons": [{ "src": "./contact.svg", "sizes": "96x96" }]
+      "icons": [{ "src": "./contact.png",
+        "type": "image/png",
+        "sizes": "96x96" }]
     }
   ]
 }
