@@ -1,5 +1,3 @@
-let swRegistration = null
-
 initializeApp();
 
 function initializeApp() {
@@ -12,7 +10,6 @@ function initializeApp() {
       .then(swReg => {
         console.log("Service Worker is registered", swReg);
 
-        swRegistration = swReg;
       })
       .catch(error => {
         console.error("Service Worker Error", error);
@@ -21,21 +18,24 @@ function initializeApp() {
     console.warn("Push messaging is not supported");
   }
 }
+
 Notification.requestPermission(function(status) {
   console.log('Notification permission status:', status)
 })
 
 function displayNotification() {
   if (Notification.permission === 'granted') {
-      const options = {
-        body: 'Here is a notification body!',
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        },
-      };
-      swRegistration.showNotification('Hello world!', options)
+    const options = {
+      body: 'Here is a notification body!',
+      vibrate: [100, 50, 100],
+      data: {
+        dateOfArrival: Date.now(),
+        primaryKey: 1
+      },
+    };
+    navigator.serviceWorker.ready.then(function (registration) {
+      registration.showNotification('Hello world!', options)
+    })
   }
 }
 
