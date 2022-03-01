@@ -4,25 +4,18 @@ Notification.requestPermission(function(status) {
 
 function displayNotification() {
   if (Notification.permission === 'granted') {
-    // navigator.serviceWorker.getRegistration().then(function(reg) {
-    //   const options = {
-    //     body: 'Here is a notification body!',
-    //     vibrate: [100, 50, 100],
-    //     data: {
-    //       dateOfArrival: Date.now(),
-    //       primaryKey: 1
-    //     },
-    //   };
-    //   reg.showNotification('Hello world!', options);
-    // });
-    new Notification('Hello!', {
-      body: 'Here is a notification body!',
-      vibrate: [100, 50, 100],
-      data: {
-        dateOfArrival: Date.now(),
-        primaryKey: 1
-      },
-    })
+    console.log(navigator)
+    navigator.serviceWorker.getRegistration().then(function(reg) {
+      const options = {
+        body: 'Here is a notification body!',
+        vibrate: [100, 50, 100],
+        data: {
+          dateOfArrival: Date.now(),
+          primaryKey: 1
+        },
+      };
+      reg.showNotification('Hello world!', options);
+    });
   }
 }
 
