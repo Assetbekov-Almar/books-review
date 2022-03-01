@@ -4,8 +4,8 @@ Notification.requestPermission(function(status) {
 
 function displayNotification() {
   if (Notification.permission === 'granted') {
-    console.log(navigator)
     navigator.serviceWorker.getRegistration().then(function(reg) {
+      console.log(reg)
       const options = {
         body: 'Here is a notification body!',
         vibrate: [100, 50, 100],
