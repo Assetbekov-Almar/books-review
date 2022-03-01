@@ -17,4 +17,4 @@ const app = (
 
 ReactDOM.render(app, document.getElementById('root'))
 
-serviceWorkerRegistration.register()
+// serviceWorkerRegistration.register()

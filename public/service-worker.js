@@ -1,52 +1,51 @@
-const CACHE_NAME = 'offline';
-const OFFLINE_URL = 'offline.html';
+let cacheName = "OpenGithubPWA";// 👈 any unique name
 
-self.addEventListener('install', function(event) {
-    console.log('[ServiceWorker] Install');
+let filesToCache = [
+    "/books-review/", // 👈 your repository name , both slash are important
+    "service-worker.js",
+    "js/main.js",
+    "js/install-handler.js",
+    "js/settings.js",
+    "manifest.json"
+    // add your assets here
+    // ❗️❕donot add config.json here ❗️❕
+];
 
-    event.waitUntil((async () => {
-        const cache = await caches.open(CACHE_NAME);
-        // Setting {cache: 'reload'} in the new request will ensure that the response
-        // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
-        await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
-    })());
-
-    self.skipWaiting();
+self.addEventListener("install", function (event) {
+    event.waitUntil(caches.open(cacheName).then((cache) => {
+        console.log('installed successfully')
+        return cache.addAll(filesToCache);
+    }));
 });
 
-self.addEventListener('activate', (event) => {
-    console.log('[ServiceWorker] Activate');
-    event.waitUntil((async () => {
-        // Enable navigation preload if it's supported.
-        // See https://developers.google.com/web/updates/2017/02/navigation-preload
-        if ('navigationPreload' in self.registration) {
-            await self.registration.navigationPreload.enable();
-        }
-    })());
+self.addEventListener('fetch', function (event) {
 
-    // Tell the active service worker to take control of the page immediately.
-    self.clients.claim();
-});
-
-self.addEventListener('fetch', function(event) {
-    // console.log('[Service Worker] Fetch', event.request.url);
-    if (event.request.mode === 'navigate') {
-        event.respondWith((async () => {
-            try {
-                const preloadResponse = await event.preloadResponse;
-                if (preloadResponse) {
-                    return preloadResponse;
-                }
-
-                const networkResponse = await fetch(event.request);
-                return networkResponse;
-            } catch (error) {
-                console.log('[Service Worker] Fetch failed; returning offline page instead.', error);
-
-                const cache = await caches.open(CACHE_NAME);
-                const cachedResponse = await cache.match(OFFLINE_URL);
-                return cachedResponse;
-            }
-        })());
+    if (event.request.url.includes('clean-cache')) {
+        caches.delete(cacheName);
+        console.log('Cache cleared')
     }
+
+    event.respondWith(caches.match(event.request).then(function (response) {
+          if (response) {
+              console.log('served form cache')
+          } else {
+              console.log('Not serving from cache ', event.request.url)
+          }
+          return response || fetch(event.request);
+      })
+    );
+});
+
+self.addEventListener('activate', function (e) {
+    e.waitUntil(
+      caches.keys().then(function (keyList) {
+          return Promise.all(keyList.map(function (key) {
+              if (key !== cacheName) {
+                  console.log('service worker: Removing old cache', key);
+                  return caches.delete(key);
+              }
+          }));
+      })
+    );
+    return self.clients.claim();
 });

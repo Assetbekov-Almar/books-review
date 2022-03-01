@@ -1,6 +1,6 @@
 {
-  "short_name": "Dissertation",
-  "name": "Dissertation: Progressive Web App",
+  "short_name": "Books Review",
+  "name": "Books Review",
   "icons": [
     {
       "src": "./small_icon.png",
@@ -13,9 +13,50 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "./",
   "background_color": "#3367D6",
   "display": "standalone",
-  "scope": "/",
-  "theme_color": "#3367D6"
+  "scope": ".",
+  "theme_color": "#3367D6",
+  "shortcuts": [
+    {
+      "name": "Library",
+      "short_name": "Library",
+      "description": "A place where you can find any book you want to review.",
+      "url": "https://assetbekov-almar.github.io/books-review/library",
+      "icons": [
+        {
+          "src": "./library.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "My Bookshelf",
+      "short_name": "Bookshelf",
+      "description": "Your bookshelf with all the added books with your reviews.",
+      "url": "https://assetbekov-almar.github.io/books-review/bookshelf",
+      "icons": [
+        {
+          "src": "./bookshelf.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact us ",
+      "short_name": "Contacts",
+      "description": "Reach out to us if you have any questions.",
+      "url": "https://assetbekov-almar.github.io/books-review/contacts",
+      "icons": [
+        {
+          "src": "./contact.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
 }
