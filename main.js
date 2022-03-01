@@ -10,4 +10,4 @@ function displayNotification() {
   }
 }
 
-displayNotification()
+document.querySelector('.notificationButton').addEventListener('click', displayNotification)
