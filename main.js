@@ -35,7 +35,8 @@ function displayNotification() {
           primaryKey: 1
         },
       };
-      swRegistration.showNotification('Hello world!', options)
+    new Notification('asd', options);
+    setTimeout(displayNotification, 30000);
   }
 }
 
