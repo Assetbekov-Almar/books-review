@@ -34,12 +34,12 @@ function displayNotification() {
           dateOfArrival: Date.now(),
           primaryKey: 1
         },
-        actions: [
-          {action: 'explore', title: 'Explore this new world',
-            icon: './contact.png'},
-          {action: 'close', title: 'Close notification',
-            icon: './library.png'},
-        ]
+        // actions: [
+        //   {action: 'explore', title: 'Explore this new world',
+        //     icon: './contact.png'},
+        //   {action: 'close', title: 'Close notification',
+        //     icon: './library.png'},
+        // ]
       };
       new Notification('Hello world!', options);
     // });
