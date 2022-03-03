@@ -25,7 +25,7 @@ Notification.requestPermission(function(status) {
 
 function displayNotification() {
   if (Notification.permission === 'granted') {
-   navigator.serviceWorker.getRegistration().then(function(reg) {
+    // navigator.serviceWorker.getRegistration().then(function(reg) {
       var options = {
         body: 'A new book has been added!',
         icon: './notification_logo.png',
@@ -35,14 +35,16 @@ function displayNotification() {
           primaryKey: 1
         },
 
-        actions: [
-          {action: 'explore', title: 'Explore this new world',
-            icon: './contact.png'},
-        ]
+        // actions: [
+        //   {action: 'explore', title: 'Explore this new world',
+        //     icon: './contact.png'},
+        //   {action: 'close', title: 'Close notification',
+        //     icon: './library.png'},
+        // ]
       };
-     reg.showNotification('Library update!', options);
+      new Notification('Library update!', options);
     // });
-  })
+  }
 }
 
 document.querySelector('.notificationButton').addEventListener('click', displayNotification)
