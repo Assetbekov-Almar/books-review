@@ -57,7 +57,10 @@ function displayNotification() {
   }
 }
 
-document.querySelector('.notificationButton').addEventListener('click', displayNotification)
+document.querySelector('.notificationButton').addEventListener('click', () => {
+  displayNotification()
+  subscribeUser()
+})
 
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
@@ -78,4 +81,3 @@ function subscribeUser() {
   }
 }
 
-document.querySelector('.notificationButton').addEventListener('click', subscribeUser)
