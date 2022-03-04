@@ -45,12 +45,12 @@ function displayNotification() {
           primaryKey: 1
         },
 
-        actions: [
-          {action: 'explore', title: 'Explore this new world',
-            icon: './contact.png'},
-          {action: 'close', title: 'Close notification',
-            icon: './library.png'},
-        ]
+        // actions: [
+        //   {action: 'explore', title: 'Explore this new world',
+        //     icon: './contact.png'},
+        //   {action: 'close', title: 'Close notification',
+        //     icon: './library.png'},
+        // ]
       };
       new Notification('Library update!', options);
     });
