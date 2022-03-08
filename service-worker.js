@@ -73,8 +73,8 @@ self.addEventListener('push', function(e) {
     //     icon: 'images/xmark.png'},
     // ]
   };
-  // e.waitUntil(
-  //   self.registration.showNotification('Hello world!', options)
-  // );
-  new Notification('Library update!', options);
+  e.waitUntil(
+    new Notification('Library update!', options)
+    // self.registration.showNotification('Hello world!', options)
+  );
 });
