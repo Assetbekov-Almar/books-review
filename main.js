@@ -64,7 +64,7 @@ document.querySelector('.notificationButton').addEventListener('click', () => {
 
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
+    navigator.serviceWorker.getRegistration('https://assetbekov-almar.github.io/books-review/').then(function(reg) {
       console.log(reg)
       reg.pushManager.subscribe({
         userVisibleOnly: true
