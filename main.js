@@ -70,8 +70,7 @@ function subscribeUser() {
         applicationServerKey: 'BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8'
       }).then(function(sub) {
         console.log('Endpoint URL: ', sub.endpoint);
-        console.log(sub.getKey('p256dh'))
-        console.log(sub.getKey('auth'))
+        console.log(sub)
       }).catch(function(e) {
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
