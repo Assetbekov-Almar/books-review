@@ -74,7 +74,7 @@ self.addEventListener('push', function(e) {
     // ]
   };
   e.waitUntil(
-    new Notification('Library update!', options)
-    // self.registration.showNotification('Hello world!', options)
+    // new Notification('Library update!', options)
+    self.registration.showNotification('Hello world!', options)
   );
 });
