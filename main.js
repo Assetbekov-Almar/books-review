@@ -14,6 +14,27 @@ function initializeApp() {
           if (sub === null) {
             // Update UI to ask user to register for Push
             console.log('Not subscribed to push service!');
+
+            navigator.serviceWorker.ready.then(function(reg) {
+              reg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8'
+              }).then(function(sub) {
+                console.log('Endpoint URL: ', sub.endpoint);
+                var subJSObject = JSON.parse(JSON.stringify(sub));
+                var endpoint = subJSObject.endpoint;
+                var auth = subJSObject.keys.auth;
+                var p256dh = subJSObject.keys.p256dh;
+                console.log(auth)
+                console.log(p256dh)
+              }).catch(function(e) {
+                if (Notification.permission === 'denied') {
+                  console.warn('Permission for notifications was denied');
+                } else {
+                  console.error('Unable to subscribe to push', e);
+                }
+              });
+            })
           } else {
             // We have a subscription, update the database
             console.log('Subscription object: ', sub);
@@ -59,33 +80,33 @@ function displayNotification() {
 
 document.querySelector('.notificationButton').addEventListener('click', () => {
   displayNotification()
-  subscribeUser()
+  // subscribeUser()
 })
 
-function subscribeUser() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(function(reg) {
-      reg.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: 'BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8'
-      }).then(function(sub) {
-        console.log('Endpoint URL: ', sub.endpoint);
-        var subJSObject = JSON.parse(JSON.stringify(sub));
-        var endpoint = subJSObject.endpoint;
-        var auth = subJSObject.keys.auth;
-        var p256dh = subJSObject.keys.p256dh;
-        console.log(auth)
-        console.log(p256dh)
-      }).catch(function(e) {
-        if (Notification.permission === 'denied') {
-          console.warn('Permission for notifications was denied');
-        } else {
-          console.error('Unable to subscribe to push', e);
-        }
-      });
-    })
-  }
-}
+// function subscribeUser() {
+//   if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.ready.then(function(reg) {
+//       reg.pushManager.subscribe({
+//         userVisibleOnly: true,
+//         applicationServerKey: 'BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8'
+//       }).then(function(sub) {
+//         console.log('Endpoint URL: ', sub.endpoint);
+//         var subJSObject = JSON.parse(JSON.stringify(sub));
+//         var endpoint = subJSObject.endpoint;
+//         var auth = subJSObject.keys.auth;
+//         var p256dh = subJSObject.keys.p256dh;
+//         console.log(auth)
+//         console.log(p256dh)
+//       }).catch(function(e) {
+//         if (Notification.permission === 'denied') {
+//           console.warn('Permission for notifications was denied');
+//         } else {
+//           console.error('Unable to subscribe to push', e);
+//         }
+//       });
+//     })
+//   }
+// }
 
 // Public Key:
 //   BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8
