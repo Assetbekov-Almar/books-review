@@ -3,9 +3,7 @@ let cacheName = "OpenGithubPWA";// 👈 any unique name
 let filesToCache = [
     "/books-review/", // 👈 your repository name , both slash are important
     "service-worker.js",
-    "js/main.js",
     "js/install-handler.js",
-    "js/settings.js",
     "manifest.json"
     // add your assets here
     // ❗️❕donot add config.json here ❗️❕
