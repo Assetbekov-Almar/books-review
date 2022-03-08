@@ -1,5 +1,3 @@
-const webpush = require('web-push');
-
 initializeApp();
 
 function initializeApp() {
