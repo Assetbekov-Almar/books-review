@@ -63,8 +63,8 @@ document.querySelector('.notificationButton').addEventListener('click', () => {
 })
 
 function subscribeUser() {
-  if (Notification.permission === 'granted') {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready.then(function(reg) {
       console.log(reg)
       reg.pushManager.subscribe({
         userVisibleOnly: true
