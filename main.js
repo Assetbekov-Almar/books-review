@@ -64,11 +64,11 @@ document.querySelector('.notificationButton').addEventListener('click', () => {
 
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
+    console.log(navigator.serviceWorker.ready)
     navigator.serviceWorker.ready.then(function(reg) {
       reg.pushManager.subscribe({
         userVisibleOnly: true
       }).then(function(sub) {
-        console.log('asd')
         console.log('Endpoint URL: ', sub.endpoint);
       }).catch(function(e) {
         if (Notification.permission === 'denied') {
