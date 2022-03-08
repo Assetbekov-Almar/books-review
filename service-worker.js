@@ -49,13 +49,21 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('push', function(e) {
+  var body;
+
+  if (e.data) {
+    body = e.data.text();
+  } else {
+    body = 'Push message no payload';
+  }
+
   const options = {
-    body: 'This notification was generated from a push!',
+    body: body,
     icon: './notification_logo.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
-      primaryKey: '2'
+      primaryKey: 2
     },
     // actions: [
     //   {action: 'explore', title: 'Explore this new world',
