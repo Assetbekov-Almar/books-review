@@ -70,7 +70,12 @@ function subscribeUser() {
         applicationServerKey: 'BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8'
       }).then(function(sub) {
         console.log('Endpoint URL: ', sub.endpoint);
-        console.log(sub)
+        var subJSObject = JSON.parse(JSON.stringify(sub));
+        var endpoint = subJSObject.endpoint;
+        var auth = subJSObject.keys.auth;
+        var p256dh = subJSObject.keys.p256dh;
+        console.log(auth)
+        console.log(p256dh)
       }).catch(function(e) {
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
