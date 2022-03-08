@@ -1,3 +1,5 @@
+const webpush = require('web-push');
+
 initializeApp();
 
 function initializeApp() {
@@ -65,9 +67,9 @@ document.querySelector('.notificationButton').addEventListener('click', () => {
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(function(reg) {
-      console.log(reg.pushManager)
       reg.pushManager.subscribe({
-        userVisibleOnly: true
+        userVisibleOnly: true,
+        applicationServerKey: 'BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8'
       }).then(function(sub) {
         console.log('Endpoint URL: ', sub.endpoint);
       }).catch(function(e) {
@@ -81,3 +83,8 @@ function subscribeUser() {
   }
 }
 
+// Public Key:
+//   BC8VJ_aFVj86_Jftr7EzJSRNwiJvexEeCJyzl-a_A0qBoGgXyxPeTIuQaTOGf5Bf9DOj-WWDVZzmpgDvAjUC0t8
+//
+// Private Key:
+//   el9T2y7Kb0Cu_IUnjacQGjdrD8ZIGDoGdZlclMxQusA
