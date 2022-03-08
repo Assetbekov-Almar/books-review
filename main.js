@@ -64,8 +64,9 @@ document.querySelector('.notificationButton').addEventListener('click', () => {
 
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
-    console.log(navigator.serviceWorker.ready)
-    navigator.serviceWorker.ready.then(function(reg) {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .then(reg => {
       reg.pushManager.subscribe({
         userVisibleOnly: true
       }).then(function(sub) {
