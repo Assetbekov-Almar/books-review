@@ -38,9 +38,10 @@ function initializeApp() {
           } else {
             // We have a subscription, update the database
             console.log('Subscription object: ', sub);
-            var endpoint = sub.endpoint;
-            var auth = sub.keys.auth;
-            var p256dh = sub.keys.p256dh;
+            var subJSObject = JSON.parse(JSON.stringify(sub));
+            var endpoint = subJSObject.endpoint;
+            var auth = subJSObject.keys.auth;
+            var p256dh = subJSObject.keys.p256dh;
             console.log(endpoint)
             console.log(auth)
             console.log(p256dh)
