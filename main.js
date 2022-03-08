@@ -12,17 +12,19 @@ function initializeApp() {
 
         swReg.pushManager.getSubscription().then(function(sub) {
           if (sub === null) {
-            swReg.pushManager.subscribe({
-              userVisibleOnly: true
-            }).then(function(sub) {
-              console.log('Endpoint URL: ', sub.endpoint);
-            }).catch(function(e) {
-              if (Notification.permission === 'denied') {
-                console.warn('Permission for notifications was denied');
-              } else {
-                console.error('Unable to subscribe to push', e);
-              }
-            });
+            navigator.serviceWorker.ready.then(function(reg) {
+              swReg.pushManager.subscribe({
+                userVisibleOnly: true
+              }).then(function (sub) {
+                console.log('Endpoint URL: ', sub.endpoint);
+              }).catch(function (e) {
+                if (Notification.permission === 'denied') {
+                  console.warn('Permission for notifications was denied');
+                } else {
+                  console.error('Unable to subscribe to push', e);
+                }
+              });
+            })
           } else {
             // We have a subscription, update the database
             console.log('Subscription object: ', sub);
