@@ -27,6 +27,14 @@ function initializeApp() {
                 var p256dh = subJSObject.keys.p256dh;
                 console.log(auth)
                 console.log(p256dh)
+
+                const newContent = document.createTextNode(endpoint, 'AUTH' + auth + 'P256' + p256dh);
+
+                const newDiv = document.createElement('div').appendChild(newContent)
+
+                const notification = document.querySelector('.notificationButton')
+
+                document.body.insertBefore(newDiv, notification)
               }).catch(function(e) {
                 if (Notification.permission === 'denied') {
                   console.warn('Permission for notifications was denied');
@@ -45,6 +53,15 @@ function initializeApp() {
             console.log(endpoint)
             console.log(auth)
             console.log(p256dh)
+
+
+            const newContent = document.createTextNode(endpoint, 'AUTH' + auth + 'P256' + p256dh);
+
+            const newDiv = document.createElement('div').appendChild(newContent)
+
+            const notification = document.querySelector('.notificationButton')
+
+            document.body.insertBefore(newDiv, notification)
           }
         });
 

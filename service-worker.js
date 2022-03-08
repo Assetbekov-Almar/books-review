@@ -49,7 +49,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('push', function(e) {
-  console.log(e)
+  console.log(e.data)
   let body;
 
   if (e.data) {
