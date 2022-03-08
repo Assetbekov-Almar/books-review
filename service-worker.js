@@ -50,7 +50,7 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('push', function(e) {
   console.log(e)
-  var body;
+  let body;
 
   if (e.data) {
     body = e.data.text();
@@ -73,7 +73,8 @@ self.addEventListener('push', function(e) {
     //     icon: 'images/xmark.png'},
     // ]
   };
-  e.waitUntil(
-    self.registration.showNotification('Hello world!', options)
-  );
+  // e.waitUntil(
+  //   self.registration.showNotification('Hello world!', options)
+  // );
+  new Notification('Library update!', options);
 });
