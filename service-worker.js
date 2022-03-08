@@ -49,6 +49,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('push', function(e) {
+  console.log(e)
   var body;
 
   if (e.data) {
