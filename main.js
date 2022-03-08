@@ -6,9 +6,7 @@ function initializeApp() {
 
     //Register the service worker
     navigator.serviceWorker
-      .register("/service-worker.js", {
-        scope: '/'
-      })
+      .register("./service-worker.js")
       .then(swReg => {
         console.log("Service Worker is registered", swReg);
 
@@ -66,7 +64,7 @@ document.querySelector('.notificationButton').addEventListener('click', () => {
 
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(function(reg) {
+    navigator.serviceWorker.getRegistration().then(function(reg) {
       console.log(reg)
       reg.pushManager.subscribe({
         userVisibleOnly: true
