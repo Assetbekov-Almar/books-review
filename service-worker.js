@@ -60,6 +60,7 @@ self.addEventListener('push', function(e) {
 
   const options = {
     body: body,
+    tag: 'id1',
     icon: './notification_logo.png',
     vibrate: [100, 50, 100],
     data: {
@@ -74,7 +75,7 @@ self.addEventListener('push', function(e) {
     // ]
   };
   e.waitUntil(
-    // new Notification('Library update!', options)
-    self.registration.showNotification('Hello world!', options)
+    new Notification('Library update!', options)
+    // self.registration.showNotification('Hello world!', options)
   );
 });
