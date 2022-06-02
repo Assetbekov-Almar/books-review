@@ -3,6 +3,7 @@ import styles from './Contacts.module.css'
 import feedback from '../../../assets/images/Feedback.gif'
 import { send } from 'emailjs-com'
 import {failureNotify, successNotify} from "../../../infrastructure/utils/toastNotifications";
+import LoaderWithBackground from "../../../common/components/LoaderWithBackground";
 
 const Contacts = () => {
     const [toSend, setToSend] = useState({
@@ -13,10 +14,27 @@ const Contacts = () => {
     })
 
     const [isEmptyError, setIsEmptyError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleChange = (e) => {
         setToSend({ ...toSend, [e.target.name]: e.target.value })
     };
+
+    function displayNotification() {
+      if (Notification.permission === 'granted') {
+        // navigator.serviceWorker.getRegistration().then(function(reg) {
+        const options = {
+          body: 'Your message has been delivered successfully! Thank you for your contribution!',
+          vibrate: [100, 50, 100],
+          data: {
+            dateOfArrival: Date.now(),
+            primaryKey: 1
+          }
+        };
+        new Notification('Delivered!', options);
+        // });
+      }
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -26,8 +44,9 @@ const Contacts = () => {
             return
         }
         setIsEmptyError(false)
+        setIsLoading(true)
 
-        send(
+      send(
           'service_0c0t89b',
           'template_f1fo9tg',
           toSend,
@@ -36,6 +55,9 @@ const Contacts = () => {
           .then((response) => {
               if (response.status === 200) {
                   successNotify()
+                  displayNotification()
+                  window.scrollTo(0, 0)
+                  setIsLoading(false)
                   setToSend({
                       from_name: '',
                       to_name: '',
@@ -64,7 +86,8 @@ const Contacts = () => {
           <img src={feedback} alt='feedback'/>
         </div>
 
-        <form className="w-full max-w-lg" onSubmit={onSubmit}>
+        <form className="w-full max-w-lg relative" onSubmit={onSubmit}>
+          <LoaderWithBackground loading={isLoading} />
           <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

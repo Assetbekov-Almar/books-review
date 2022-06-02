@@ -17,7 +17,7 @@ const BottomNavigation = () => {
 
 	useEffect(() => {
 		const currentTab = tabs.find((tab => tab.pathname === pathname))
-		setActiveTab(currentTab.name)
+		setActiveTab(currentTab?.name || tabs[0].name)
 	}, [])
 
 	const handleClick = (name) => () => {

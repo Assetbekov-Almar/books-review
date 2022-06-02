@@ -4,6 +4,7 @@ import {ToastContainer} from "react-toastify";
 import LocalStorageService from "../../../infrastructure/service/storage/LocalStorageService";
 import {EMAIL} from "../../../infrastructure/service/storage/config";
 import BottomNavigation from "../BottomNavigation";
+import Header from "../Header";
 
 const Library = lazy(() => import('../../pages/Library'))
 const Bookshelf = lazy(() => import('../../pages/Bookshelf'))
@@ -127,25 +128,27 @@ function Layout() {
     // Optionally, send analytics event to indicate successful install
     console.log('PWA was installed');
   });
+
     return (
-        <div style={{width: '100%', overflowX: 'hidden'}}>
-          <ToastContainer />
-            <div className='content mb-20'>
-              <header className="App-header">
-                <h2 className="install-promotion">You can install PWA now.</h2>
-                <p id="requireHTTPS" className="hidden">
-                  <b>STOP!</b> This page <b>must</b> be served over HTTPS. Please <a>reload this page via HTTPS</a>.
-                </p>
-                <div id="installContainer" className="hidden">
-                  <button id="butInstall" type="button" onClick={() => handleInstallBtnClick}>
-                    Install
-                  </button>
-                </div>
-              </header>
-                <Outlet />
-            </div>
-            <BottomNavigation />
-        </div>
+      <div style={{width: '100%', overflowX: 'hidden'}}>
+        <ToastContainer />
+          <Header />
+          <div className='content mb-20'>
+            <header className="App-header">
+              <h2 className="install-promotion">You can install PWA now.</h2>
+              <p id="requireHTTPS" className="hidden">
+                <b>STOP!</b> This page <b>must</b> be served over HTTPS. Please <a>reload this page via HTTPS</a>.
+              </p>
+              <div id="installContainer" className="hidden">
+                <button id="butInstall" type="button" onClick={() => handleInstallBtnClick}>
+                  Install
+                </button>
+              </div>
+            </header>
+              <Outlet />
+          </div>
+          <BottomNavigation />
+      </div>
     )
 }
 

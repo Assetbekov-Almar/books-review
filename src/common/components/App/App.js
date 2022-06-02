@@ -1,15 +1,25 @@
-import React, { useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import { appInitStart } from '../../../infrastructure/redux/actions/appInit/actions'
 import AppSelector from '../AppSelector'
 import InitLoader from '../InitLoader'
 
 function App({ isInit, error, appInitStart }) {
+	const [isReady, setIsReady] = useState(false)
+
 	useEffect(() => {
 		appInitStart()
 	}, [appInitStart])
 
-	if (!isInit) return <InitLoader />
+	useEffect(() => {
+		if (isInit) {
+			setTimeout(() => {
+				setIsReady(true)
+			}, 1500)
+		}
+	}, [isInit])
+
+	if (!isReady) return <InitLoader />
 
 	if (error) return <div>Error</div>
 
