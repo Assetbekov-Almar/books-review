@@ -1,0 +1,24 @@
+.will-change {
+  will-change: transform;
+}
+
+.cursor::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background-color: #000;
+  animation: cursor .6s linear infinite alternate;
+  will-change: opacity;
+}
+
+@keyframes cursor {
+  0%, 40% {
+    opacity: 0;
+  }
+
+  60%, 100% {
+    opacity: 1;
+  }
+}

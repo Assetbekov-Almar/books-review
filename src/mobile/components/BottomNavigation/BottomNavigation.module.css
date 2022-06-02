@@ -1,0 +1,44 @@
+.BottomNavigation {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	z-index: 2;
+}
+
+.BottomNavigation__item {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-left: 1px solid #b6b6b6;
+	border-top: 1px solid #b6b6b6;
+	padding: 7px;
+	background-color: white;
+}
+
+.Link__text_active {
+	color: #3b3fe1;
+}
+
+.Link__icon_active {
+	color: #3b3fe1;
+}
+
+.BottomNavigation__link {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	align-items: center;
+	justify-content: center;
+}
+
+.Link__icon {
+	font-size: 20px;
+}
+
+.Link__text {
+	font-size: 12px;
+}

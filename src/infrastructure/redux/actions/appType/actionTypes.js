@@ -1,0 +1,2 @@
+export const SET_MOBILE_TYPE = 'SET_MOBILE_TYPE'
+export const SET_DESKTOP_TYPE = 'SET_DESKTOP_TYPE'

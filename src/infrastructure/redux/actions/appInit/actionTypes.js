@@ -1,0 +1,3 @@
+export const APP_INIT_START = 'APP_INIT_START'
+export const APP_INIT_FINISH = 'APP_INIT_FINISH'
+export const APP_INIT_ERROR = 'APP_INIT_ERROR'
