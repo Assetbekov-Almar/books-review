@@ -1,0 +1,9 @@
+.Download__button {
+	background-color: #1f82e1;
+	border: none;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 16px;
+	padding: 4px 12px;
+}

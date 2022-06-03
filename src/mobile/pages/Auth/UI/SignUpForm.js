@@ -31,7 +31,7 @@ const SignUpForm = (props) => {
   }
 
   return (
-    <form className="w-full h-full flex flex-col pt-10 items-center bg-gray-100" onSubmit={handleSubmit} autoComplete="off">
+    <form className="w-full h-full flex flex-col pt-10 items-center" onSubmit={handleSubmit} autoComplete="off">
 
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">

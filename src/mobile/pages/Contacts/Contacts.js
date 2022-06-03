@@ -77,13 +77,13 @@ const Contacts = () => {
       <div className="m-5">
         <div className="mb-16 group">
             <span className="relative">
-              <span className="h-20 pt-2 text-4xl overflow-x-hidden whitespace-nowrap text-brand-accent text-blue-700">
+              <span className="h-20 pt-2 text-4xl overflow-x-hidden whitespace-wrap text-brand-accent text-blue-700">
                 We care what you think!
               </span>
                <span className={`${styles.cursor} absolute -top-4 left-0 -top-1 inline-block h-10 bg-white w-full animate-type will-change`} />
             </span>
           <p className="text-2xl text-gray-500 mt-2 animate-appear opacity-0">Give us feedback, so that we know what we should improve to deliver a better experience.</p>
-          <img src={feedback} alt='feedback'/>
+          <img src={feedback} alt='feedback' className={styles.Feedback__image}/>
         </div>
 
         <form className="w-full max-w-lg relative" onSubmit={onSubmit}>

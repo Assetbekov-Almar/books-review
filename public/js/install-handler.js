@@ -1,4 +1,4 @@
-var deferredInstallPrompt = null;
+let deferredInstallPrompt = null;
 
 
 window.addEventListener('beforeinstallprompt', function (event) {
@@ -16,9 +16,12 @@ function downloadButtonClicked(event) {
     deferredInstallPrompt.userChoice
         .then(function (choiceResult) {
             if (choiceResult.outcome === 'accepted') {
-
-                deferredInstallPrompt = null;
-                document.querySelector('.downloadPrompt').style.display = 'none';
+              deferredInstallPrompt = null;
+              const prompt = document.querySelector('.downloadPrompt')
+              if (prompt) {
+                prompt.style.display = 'none';
+                localStorage.setItem('is-installed', 'true')
+              }
 
             } else {
                 console.log(choiceResult)
@@ -28,7 +31,10 @@ function downloadButtonClicked(event) {
 }
 
 function showDownloadPrompt() {
-    document.querySelector('.downloadPrompt').style.display = 'grid';
+  const prompt = document.querySelector('.downloadPrompt')
+  if (prompt) {
+    prompt.style.display = 'grid';
+  }
 }
 
 window.addEventListener('appinstalled', (evt) => {

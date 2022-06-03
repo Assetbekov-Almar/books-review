@@ -8,11 +8,6 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <HeaderLogo />
-          <div className="downloadPrompt">
-            <div className="promptControllers">
-              <button className="downloadButton">Download</button>
-            </div>
-          </div>
             <div className="flex justify-center items-center gap-x-1.5 mt-4 lg:mt-0">
               <a href='https://github.com/Assetbekov-Almar' target="_blank" rel="noreferrer" >
                 <img src={github} alt='github' />

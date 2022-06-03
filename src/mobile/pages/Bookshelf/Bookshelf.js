@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {connect} from "react-redux"
 import {setReview} from "../../../infrastructure/redux/actions/bookshelf"
 import {successNotify} from "../../../infrastructure/utils/toastNotifications";
+import DownloadButton from "../../../common/components/DownloadButton";
 
 const Bookshelf = ({books, reviews, setReview}) => {
 
@@ -36,6 +37,7 @@ const Bookshelf = ({books, reviews, setReview}) => {
 
   return (
     <div className="m-2">
+      <DownloadButton />
       {books.map((book, index) => {
         const { volumeInfo } = book
         return (
@@ -68,7 +70,7 @@ const Bookshelf = ({books, reviews, setReview}) => {
                 </div>
               </div>
               <textarea
-                className="p-2.5 mt-5 h-40 text-gray-700 w-full text-base border-t-2 border-b-2 border-black-200 focus:outline-none focus:border-gray-300 focus:border-opacity-85 rounded resize-none "
+                className="p-2.5 mt-5 h-40 text-gray-700 w-full text-base border-t-2 border-b-2 border-black-200 focus:outline-none focus:border-gray-300 focus:border-opacity-85 resize-none "
                 defaultValue={reviews.find(review => review.id === book.id)?.review}
                 onChange={handleTextAreaChange(index)}
                 value={state[index]?.review}

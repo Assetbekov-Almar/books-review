@@ -26,7 +26,7 @@ const SignInForm = (props) => {
   }
 
   return (
-    <form className="w-full h-full max-w-md flex flex-col pt-10 items-center bg-gray-100" onSubmit={handleSubmit}>
+    <form className="w-full h-full max-w-md flex flex-col pt-10 items-center" onSubmit={handleSubmit}>
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">
           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"

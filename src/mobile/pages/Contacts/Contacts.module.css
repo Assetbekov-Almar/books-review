@@ -13,6 +13,11 @@
   will-change: opacity;
 }
 
+.Feedback__image {
+  height: 385px;
+  max-height: 100%;
+}
+
 @keyframes cursor {
   0%, 40% {
     opacity: 0;
