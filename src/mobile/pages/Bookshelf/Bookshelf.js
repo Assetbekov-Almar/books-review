@@ -39,9 +39,9 @@ const Bookshelf = ({books, reviews, setReview}) => {
       {books.map((book, index) => {
         const { volumeInfo } = book
         return (
-          <div key={index}>
+          <div key={index} className="shadow-xl mb-10 border-2 border-black-600 rounded">
             <div className="pt-10">
-              <div className="max-w-sm rounded overflow-hidden shadow-lg flex my-0 mx-auto">
+              <div className="max-w-sm rounded overflow-hidden flex my-0 mx-auto">
                 <img className="w-50 h-40 m-auto" src={volumeInfo.imageLinks?.thumbnail} alt=""/>
                 <div className="px-6 py-4 w-60">
                   <div className="font-bold text-xl mb-2">
@@ -68,13 +68,14 @@ const Bookshelf = ({books, reviews, setReview}) => {
                 </div>
               </div>
               <textarea
-                className="p-2.5 mt-5 h-40 text-gray-700 w-full text-base border-2 border-black-200 focus:outline-none focus:border-gray-300 focus:border-opacity-85 shadow-lg rounded resize-none "
+                className="p-2.5 mt-5 h-40 text-gray-700 w-full text-base border-t-2 border-b-2 border-black-200 focus:outline-none focus:border-gray-300 focus:border-opacity-85 rounded resize-none "
                 defaultValue={reviews.find(review => review.id === book.id)?.review}
                 onChange={handleTextAreaChange(index)}
                 value={state[index]?.review}
+                placeholder={"Type here..."}
               />
             </div>
-            <div className="flex justify-end mt-2.5 mr-1 gap-4">
+            <div className="flex justify-end p-2 gap-4">
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                 onClick={handleSaveClick(book.id, index)}
