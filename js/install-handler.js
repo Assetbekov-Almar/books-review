@@ -7,10 +7,11 @@ window.addEventListener('beforeinstallprompt', function (event) {
     showDownloadPrompt();
 });
 
+document.addEventListener('click', downloadButtonClicked)
 
-document.querySelector('.downloadButton').addEventListener('click', downloadButtonClicked)
-
-function downloadButtonClicked() {
+function downloadButtonClicked(event) {
+  const element = event.target;
+  if(element.classList.contains("downloadButton")) {
     deferredInstallPrompt.prompt();
     deferredInstallPrompt.userChoice
         .then(function (choiceResult) {
@@ -23,6 +24,7 @@ function downloadButtonClicked() {
                 console.log(choiceResult)
             }
         })
+  }
 }
 
 function showDownloadPrompt() {

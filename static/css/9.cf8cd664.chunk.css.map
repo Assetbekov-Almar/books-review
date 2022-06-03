@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/mobile/pages/Auth/Auth.module.css"],"names":[],"mappings":"AAAA,kBACC,YAAa,CACb,qBAAsB,CACtB,kBAAmB,CACnB,sBAAuB,CACvB,YACD","file":"9.cf8cd664.chunk.css","sourcesContent":[".Auth {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 100vh;\n}\n\n.Auth__image {\n}"]}
