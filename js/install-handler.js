@@ -18,7 +18,10 @@ function downloadButtonClicked(event) {
             if (choiceResult.outcome === 'accepted') {
 
                 deferredInstallPrompt = null;
-                document.querySelector('.downloadPrompt').style.display = 'none';
+              const prompt = document.querySelector('.downloadPrompt')
+              if (prompt) {
+                prompt.style.display = 'none';
+              }
 
             } else {
                 console.log(choiceResult)
@@ -28,7 +31,10 @@ function downloadButtonClicked(event) {
 }
 
 function showDownloadPrompt() {
-    document.querySelector('.downloadPrompt').style.display = 'grid';
+  const prompt = document.querySelector('.downloadPrompt')
+  if (prompt) {
+    prompt.style.display = 'grid';
+  }
 }
 
 window.addEventListener('appinstalled', (evt) => {
