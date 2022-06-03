@@ -1,4 +1,4 @@
-var deferredInstallPrompt = null;
+let deferredInstallPrompt = null;
 
 
 window.addEventListener('beforeinstallprompt', function (event) {
@@ -16,11 +16,11 @@ function downloadButtonClicked(event) {
     deferredInstallPrompt.userChoice
         .then(function (choiceResult) {
             if (choiceResult.outcome === 'accepted') {
-
-                deferredInstallPrompt = null;
+              deferredInstallPrompt = null;
               const prompt = document.querySelector('.downloadPrompt')
               if (prompt) {
                 prompt.style.display = 'none';
+                localStorage.setItem('is-installed', 'true')
               }
 
             } else {
