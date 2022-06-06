@@ -4,6 +4,7 @@ import feedback from '../../../assets/images/Feedback.gif'
 import { send } from 'emailjs-com'
 import {failureNotify, successNotify} from "../../../infrastructure/utils/toastNotifications";
 import LoaderWithBackground from "../../../common/components/LoaderWithBackground";
+import DownloadButton from "../../../common/components/DownloadButton";
 
 const Contacts = () => {
     const [toSend, setToSend] = useState({
@@ -75,9 +76,10 @@ const Contacts = () => {
 
     return (
       <div className="m-5">
+        <DownloadButton />
         <div className="mb-16 group">
             <span className="relative">
-              <span className="h-20 pt-2 text-4xl overflow-x-hidden whitespace-wrap text-brand-accent text-blue-700">
+              <span className="h-20 pt-2 text-4xl overflow-x-hidden whitespace-nowrap text-brand-accent text-blue-700">
                 We care what you think!
               </span>
                <span className={`${styles.cursor} absolute -top-4 left-0 -top-1 inline-block h-10 bg-white w-full animate-type will-change`} />
