@@ -14,7 +14,7 @@ let filesToCache = [
 self.addEventListener("install", function (event) {
     event.waitUntil(caches.open(cacheName).then((cache) => {
         console.log('installed successfully')
-        return cache.addAll(filesToCache);
+        // return cache.addAll(filesToCache);
     }));
 });
 

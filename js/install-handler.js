@@ -4,10 +4,10 @@ let deferredInstallPrompt = null;
 window.addEventListener('beforeinstallprompt', function (event) {
     event.preventDefault();
     deferredInstallPrompt = event;
-    showDownloadPrompt();
+    // showDownloadPrompt();
 });
 
-document.addEventListener('click', downloadButtonClicked)
+// document.addEventListener('click', downloadButtonClicked)
 
 function downloadButtonClicked(event) {
   const element = event.target;
@@ -30,12 +30,12 @@ function downloadButtonClicked(event) {
   }
 }
 
-function showDownloadPrompt() {
-  const prompt = document.querySelector('.downloadPrompt')
-  if (prompt) {
-    prompt.style.display = 'grid';
-  }
-}
+// function showDownloadPrompt() {
+//   const prompt = document.querySelector('.downloadPrompt')
+//   if (prompt) {
+//     prompt.style.display = 'grid';
+//   }
+// }
 
 window.addEventListener('appinstalled', (evt) => {
     // Log install to analytics
